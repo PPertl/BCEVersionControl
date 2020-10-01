@@ -27,6 +27,7 @@ namespace ExcelImport
         {
             InitializeComponent();
             LoadData();
+            Create();
         }
         private void LoadData()
         {
@@ -107,7 +108,7 @@ namespace ExcelImport
                 values[counter, 6] = item.FloorArea;
                 values[counter, 7] = item.Price;
 
-                values[counter, 8] = "=" + GetCell(counter, 7).ToString() + " / " + GetCell(counter, 6).ToString();
+                values[counter, 8] = "=" + GetCell(counter+2, 8).ToString() + "*1000000" + " / " + GetCell(counter+2, 7).ToString();
                                                
                 counter++;
 
