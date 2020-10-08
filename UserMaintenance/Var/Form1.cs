@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Var
         PortfolioEntities context = new PortfolioEntities();
         List<Tick> Ticks;
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
+        string kimenet;
+        List<decimal> Nyereségek = new List<decimal>();
         public Form1()
         {
             InitializeComponent();
@@ -23,7 +26,7 @@ namespace Var
             dataGridView1.DataSource = Ticks;
             CreatePortfolio();
 
-            List<decimal> Nyereségek = new List<decimal>();
+            
             int intervalum = 30;
             DateTime kezdőDátum = (from x in Ticks select x.TradingDay).Min();
             DateTime záróDátum = new DateTime(2016, 12, 30);
@@ -42,7 +45,12 @@ namespace Var
                                         .ToList();
             MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
 
-
+            foreach (var item in nyereségekRendezve)
+            {
+                kimenet += item+" ";
+            }
+            Console.Write(kimenet);
+            Console.WriteLine("csa");
         }
         private void CreatePortfolio()
         {
@@ -65,6 +73,29 @@ namespace Var
                 value += (decimal)last.Price * item.Volume;
             }
             return value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Title = "Save";
+            saveDialog.Filter = "Text Files (*.txt)|*.txt" + "|" +
+                                "Image Files (*.png;*.jpg)|*.png;*.jpg" + "|" +
+                                "All Files (*.*)|*.*";
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (Stream s = File.Open(saveDialog.FileName, FileMode.CreateNew))
+                using (StreamWriter sw = new StreamWriter(s))
+                {
+                    //foreach (User item in users)
+                   // {
+                  //      sw.WriteLine("teljes név: " + item.FullName);
+                   //     sw.WriteLine("ID: " + item.ID);
+                  //      sw.WriteLine();
+                   // }
+
+                }
+            }
         }
     }
 }
