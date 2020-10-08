@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserMaintenance", "UserMain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelImport", "ExcelImport\ExcelImport.csproj", "{2C23C4B5-47E9-4305-9995-4C6D5B6EB4A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Var", "Var\Var.csproj", "{163D83F4-B3E0-4EE5-8B6B-45D5C75E367B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2C23C4B5-47E9-4305-9995-4C6D5B6EB4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C23C4B5-47E9-4305-9995-4C6D5B6EB4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C23C4B5-47E9-4305-9995-4C6D5B6EB4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{163D83F4-B3E0-4EE5-8B6B-45D5C75E367B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{163D83F4-B3E0-4EE5-8B6B-45D5C75E367B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{163D83F4-B3E0-4EE5-8B6B-45D5C75E367B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{163D83F4-B3E0-4EE5-8B6B-45D5C75E367B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
