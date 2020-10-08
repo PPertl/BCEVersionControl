@@ -12,13 +12,15 @@ using Var.Entities;
 
 namespace Var
 {
+    
     public partial class Form1 : Form
     {
         PortfolioEntities context = new PortfolioEntities();
         List<Tick> Ticks;
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
-        string kimenet;
-        List<decimal> Nyereségek = new List<decimal>();
+        List<string> doboz = new List<string>();
+        
+        
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace Var
             dataGridView1.DataSource = Ticks;
             CreatePortfolio();
 
-            
+            List<decimal> Nyereségek = new List<decimal>();
             int intervalum = 30;
             DateTime kezdőDátum = (from x in Ticks select x.TradingDay).Min();
             DateTime záróDátum = new DateTime(2016, 12, 30);
@@ -44,13 +46,16 @@ namespace Var
                                       select x)
                                         .ToList();
             MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
-
+            int szam = 0;
             foreach (var item in nyereségekRendezve)
             {
-                kimenet += item+" ";
+                doboz.Add(szam.ToString()+ "        "+item.ToString() );
+                //Console.WriteLine(doboz);
+                szam++;
+
             }
-            Console.Write(kimenet);
-            Console.WriteLine("csa");
+            
+
         }
         private void CreatePortfolio()
         {
@@ -87,12 +92,9 @@ namespace Var
                 using (Stream s = File.Open(saveDialog.FileName, FileMode.CreateNew))
                 using (StreamWriter sw = new StreamWriter(s))
                 {
-                    //foreach (User item in users)
-                   // {
-                  //      sw.WriteLine("teljes név: " + item.FullName);
-                   //     sw.WriteLine("ID: " + item.ID);
-                  //      sw.WriteLine();
-                   // }
+                    sw.WriteLine("Időszak   Nyereség");
+                    doboz.ForEach(sw.WriteLine);
+                    
 
                 }
             }
