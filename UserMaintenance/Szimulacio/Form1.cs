@@ -18,7 +18,7 @@ namespace Szimulacio
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
-        Random rng = new Random(1234);
+        Random rng = new Random();
 
         List<string> Men = new List<string>();
         List<string> Women = new List<string>();
