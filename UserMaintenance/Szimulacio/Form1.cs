@@ -20,15 +20,21 @@ namespace Szimulacio
 
         Random rng = new Random(1234);
 
+        List<string> Men = new List<string>();
+        List<string> Women = new List<string>();
+        List<string> Years = new List<string>();
+
+        public int endDate = 2025;
+
         public Form1()
         {
             InitializeComponent();
 
-            Population = GetPopulation(@"C:\Temp\nép.csv");
+            
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
 
-            simulation();
+            
 
 
 
@@ -104,8 +110,13 @@ namespace Szimulacio
 
         public void simulation()
         {
+            richTextBox1.Text = "";
+            Men.Clear();
+            Women.Clear();
+            Years.Clear();
+            Population = GetPopulation(textBox1.Text);
             // Végigmegyünk a vizsgált éveken
-            for (int year = 2005; year <= 2024; year++)
+            for (int year = 2005; year <= endDate; year++)
             {
                 // Végigmegyünk az összes személyen
                 for (int i = 0; i < Population.Count; i++)
@@ -120,9 +131,14 @@ namespace Szimulacio
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
-                Console.WriteLine(
-                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+                Men.Add(nbrOfMales.ToString());
+                Women.Add(nbrOfFemales.ToString());
+                Years.Add(year.ToString());
+
+                //Console.WriteLine(
+                //    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
             }
+            DisplayResults();
         }
         public void SimStep(int year, Person person)
         {
@@ -159,6 +175,45 @@ namespace Szimulacio
             }
 
 
+        }
+
+        private void Button_Start_Click(object sender, EventArgs e)
+        {
+            simulation();
+
+        }
+
+        private void Button_Browse_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Megnyitás";
+           
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+
+                textBox1.Text = openFileDialog.FileName;
+            }
+
+
+
+        }
+
+       
+        public void DisplayResults()
+        {
+            for (int i = 0; i < Years.Count; i++)
+            {
+                richTextBox1.Text += "Szimulációs év: " + Years[i]
+                    + "\n \t" + "Fiúk: " + Men[i]
+                    + "\n \t" + "Lányok: " + Women[i] + "\n \n";
+            }
+        }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+            endDate = Convert.ToInt32(Math.Round(numericUpDown1.Value, 0));
         }
     }
 }
