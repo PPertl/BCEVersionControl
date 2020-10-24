@@ -18,6 +18,8 @@ namespace Szimulacio
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
+        Random rng = new Random(1234);
+
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +27,10 @@ namespace Szimulacio
             Population = GetPopulation(@"C:\Temp\nép.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
-            
+
+
+
+
         }
 
         public List<Person> GetPopulation(string csvpath)
@@ -64,7 +69,7 @@ namespace Szimulacio
                     {
                         Age = int.Parse(line[0]),
                         NbrOfChildren = int.Parse(line[1]),
-                        P = int.Parse(line[2])
+                        P = double.Parse(line[2])
                     });
                 }
             }
@@ -86,7 +91,7 @@ namespace Szimulacio
                     {
                         Gender = (Gender)Enum.Parse(typeof(Gender), line[0]),
                         Age = int.Parse(line[1]),
-                        P = int.Parse(line[2])                        
+                        P = double.Parse(line[2])                        
                     });
                 }
             }
