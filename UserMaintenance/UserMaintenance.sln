@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Var", "Var\Var.csproj", "{1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "arfolyam", "arfolyam\arfolyam.csproj", "{AE7E152F-3787-4C84-873F-82102EA2D2D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Szimulacio", "Szimulacio\Szimulacio.csproj", "{5F5BD831-4921-470B-91D6-0144A1701779}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AE7E152F-3787-4C84-873F-82102EA2D2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE7E152F-3787-4C84-873F-82102EA2D2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE7E152F-3787-4C84-873F-82102EA2D2D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F5BD831-4921-470B-91D6-0144A1701779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F5BD831-4921-470B-91D6-0144A1701779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F5BD831-4921-470B-91D6-0144A1701779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F5BD831-4921-470B-91D6-0144A1701779}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
