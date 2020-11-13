@@ -20,13 +20,13 @@ namespace MikulasGyar
         public IToyFactory Factory
         {
             get { return _factory; }
-            set 
+            set
             {
                 _factory = value;
                 DisplayNext();
             }
         }
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -66,10 +66,28 @@ namespace MikulasGyar
 
         private void Ball_button_Click(object sender, EventArgs e)
         {
-            Factory =  new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = btnBallColor.BackColor
+            };
         }
 
-        private void DisplayNext()
+        private void btnBallColor_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            button.BackColor = colorPicker.Color;
+
+        }
+    
+
+    private void DisplayNext()
         {
             if (_nextToy !=null)
             {
@@ -81,17 +99,5 @@ namespace MikulasGyar
             Controls.Add(_nextToy);
         }
 
-        private void btnColor_Click(object sender, EventArgs e)
-        {
-            var button = (Button)sender;
-            var colorPicker = new ColorDialog();
-
-            colorPicker.Color = button.BackColor;
-            if (colorPicker.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-            button.BackColor = colorPicker.Color;
-        }
     }
 }
