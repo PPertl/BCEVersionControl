@@ -99,5 +99,15 @@ namespace MikulasGyar
             Controls.Add(_nextToy);
         }
 
+        private void btnPresent_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                RibbonColor = btnPresentRibbonColor.BackColor,
+                BoxColor = btnPresentBoxColor.BackColor
+
+            };
+
+        }
     }
 }
