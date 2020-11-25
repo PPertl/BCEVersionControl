@@ -21,6 +21,8 @@ namespace Evolucio
             InitializeComponent();
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
+            //gc.AddPlayer();   csak teszteléshez
+            //gc.Start(true);
         }
     }
 }
