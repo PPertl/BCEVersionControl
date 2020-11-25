@@ -109,5 +109,10 @@ namespace MikulasGyar
             };
 
         }
+
+        private void Gyár_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -143,7 +143,8 @@
             this.Controls.Add(this.lblNext);
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Halálgyár";
+            this.Load += new System.EventHandler(this.Gyár_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
