@@ -39,7 +39,7 @@ namespace Evolucio
             gc.GameOver += Gc_GameOver;
 
             //gc.AddPlayer();   csak teszteléshez
-            gc.Start(true);
+            gc.Start();
         }
 
         private void Gc_GameOver(object sender)
@@ -58,11 +58,16 @@ namespace Evolucio
             var winners = from p in topPerformers
                           where p.IsWinner
                           select p;
+
+            
             if (winners.Count() > 0)
             {
                 winnerBrain = winners.FirstOrDefault().Brain.Clone();
                 gc.GameOver -= Gc_GameOver;
+                button1.Visible = true;
+                
                 return;
+                
             }
             //
 
@@ -84,6 +89,15 @@ namespace Evolucio
 
 
             gc.Start();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gc.ResetCurrentLevel();
+            gc.AddPlayer(winnerBrain.Clone());
+            gc.AddPlayer();
+            ga.Focus();
+            gc.Start(true);
         }
     }
 }
